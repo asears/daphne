@@ -38,12 +38,20 @@ jobs:
       - name: Install the project
         run: uv sync --all-extras --dev
 
-      - name: Check format
+      - name: Check black format
         if: success() || failure()
         run: uv run black --check
         # run: ruff format --check
 
-      - name: Run Ruff
+      - name: Check ruff format
+        if: success() || failure()
+        run: ruff format --check
+
+      - name: Run flake8
+        if: success() || failure()
+        run: uv run flake8 .
+
+      - name: Run ruff check
         if: success() || failure()
         run: uv run ruff check --output-format=github .
 

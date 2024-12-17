@@ -43,6 +43,7 @@ tests = [
     "black",
     "uv",
     "ruff",
+    "tox",
 ]
 
 [project.scripts]
@@ -134,6 +135,7 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 # S108 Probable insecure usage of temporary file or directory: "/tmp/daphne.sock"
 "daphne/testing.py" = ["S301"]
 "tests/test_cli.py" = ["S108"]
+"tests/http_base.py" = ["UP041"]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -148,3 +150,10 @@ line-ending = "auto"
 # to be opt-out in the future.
 docstring-code-format = false
 docstring-code-line-length = "dynamic"
+
+[tool.tox]
+envlist = ["py39", "py310", "py311", "py312", "py313"]
+
+[tool.tox.testenv]
+extras = ["tests"]
+commands = ["pytest -v {posargs}"]
