@@ -54,7 +54,7 @@ daphne = "daphne.cli:CommandLineInterface.entrypoint"
 
 [tool.setuptools.dynamic]
 version = { attr = "daphne.__version__" }
-readme = {file = "README.rst", content-type = "text/x-rst"}
+readme = { file = "README.rst", content-type = "text/x-rst" }
 
 [tool.uv]
 package = true
@@ -84,10 +84,15 @@ filterwarnings = ["ignore::pytest.PytestDeprecationWarning"]
 # addopts = "--cov=daphne --cov-report html"
 
 [tool.coverage.run]
-omit = ["tests"]
+omit = ["tests/*"]
+concurrency = ["multiprocessing"]
 
 [tool.coverage.report]
 show_missing = "true"
+skip_covered = "true"
+
+[tool.coverage.html]
+directory = "coverage_html_report"
 
 [tool.ruff]
 exclude = [
