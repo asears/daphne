@@ -12,9 +12,12 @@ permissions:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os:
+          - ubuntu
+          # - windows
         python-version:
           - "3.9"
           # - "3.10"

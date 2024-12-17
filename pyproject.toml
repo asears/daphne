@@ -133,6 +133,7 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 [tool.ruff.lint.per-file-ignores]
 # S301 `pickle` and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue
 # S108 Probable insecure usage of temporary file or directory: "/tmp/daphne.sock"
+# UP041 Replace aliased errors with `TimeoutError`
 "daphne/testing.py" = ["S301"]
 "tests/test_cli.py" = ["S108"]
 "tests/http_base.py" = ["UP041"]
