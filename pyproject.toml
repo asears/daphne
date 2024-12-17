@@ -47,6 +47,8 @@ tests = [
 homepage = "https://github.com/django/daphne"
 documentation = "https://channels.readthedocs.io"
 repository = "https://github.com/django/daphne.git"
+changelog = "https://github.com/django/daphne/blob/main/CHANGELOG.txt"
+issues = "https://github.com/django/daphne/issues"
 
 [project.scripts]
 daphne = "daphne.cli:CommandLineInterface.entrypoint"
