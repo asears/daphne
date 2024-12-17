@@ -3,7 +3,6 @@ name = "daphne"
 dynamic = ["version"]
 description = "Django ASGI (HTTP/WebSocket) server"
 requires-python = ">=3.9"
-readme = { file = "README.rst" }
 authors = [
     { name = "Django Software Foundation", email = "foundation@djangoproject.com" },
 ]
@@ -55,6 +54,7 @@ daphne = "daphne.cli:CommandLineInterface.entrypoint"
 
 [tool.setuptools.dynamic]
 version = { attr = "daphne.__version__" }
+readme = {file = "README.rst", content-type = "text/x-rst"}
 
 [tool.uv]
 package = true
