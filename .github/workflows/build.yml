@@ -49,10 +49,6 @@ jobs:
         if: success() || failure()
         run: uv run ruff format . --check
 
-      - name: Run flake8
-        if: success() || failure()
-        run: uv run flake8 .
-
       - name: Run ruff check
         if: success() || failure()
         run: uv run ruff check --output-format=github .
