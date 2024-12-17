@@ -3,7 +3,7 @@ name = "daphne"
 dynamic = ["version"]
 requires-python = ">=3.9"
 
-# TODO(AS): upgrade setup.cfg
+# TODO(AS): upgrade setup.cfg properties
 # url = "https://github.com/django/daphne"
 # author = "Django Software Foundation"
 # author-email = "foundation@djangoproject.com"
@@ -70,6 +70,7 @@ filterwarnings = [
     "ignore::pytest.PytestDeprecationWarning"
 ]
 
+# TODO(AS): This conflicts with tests for some reason
 # [tool.pytest.ini_options]
 # addopts = "--cov=daphne --cov-report html"
 
@@ -113,7 +114,7 @@ target-version = "py310"
 output-format = "grouped"
 
 [tool.ruff.lint]
-select = ["E4", "E7", "E9", "F", "W", "UP", "S", "B"]
+select = ["I", "E4", "E7", "E9", "F", "W", "UP", "S", "B"]
 
 # E402 Module level import not at top of file
 # S101 Use of `assert` detected

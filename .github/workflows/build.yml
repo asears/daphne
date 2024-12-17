@@ -58,6 +58,10 @@ jobs:
         if: success() || failure()
         run: uv run ruff check --output-format=github .
 
+      - name: Run type checks
+        if: success() || failure()
+        run: uv run mypy .
+
       - name: Run tests
         if: success() || failure()
         run: uv run pytest tests
