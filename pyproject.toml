@@ -52,6 +52,9 @@ issues = "https://github.com/django/daphne/issues"
 [project.scripts]
 daphne = "daphne.cli:CommandLineInterface.entrypoint"
 
+[tool.setuptools]
+packages = ["daphne"]
+
 [tool.setuptools.dynamic]
 version = { attr = "daphne.__version__" }
 readme = { file = "README.rst", content-type = "text/x-rst" }
@@ -92,7 +95,7 @@ show_missing = "true"
 skip_covered = "true"
 
 [tool.coverage.html]
-directory = "coverage_html_report"
+directory = "reports/coverage_html_report"
 
 [tool.ruff]
 exclude = [

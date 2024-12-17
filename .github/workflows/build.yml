@@ -13,6 +13,7 @@ permissions:
 
 env:
   PROJ_NAME: daphne
+  COVERAGE_REPORT_PATH: reports/coverage_html_report/code-coverage.html
 
 jobs:
   build:
@@ -74,7 +75,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
-          path: coverage_html_report/code-coverage.html
+          path: ${{ vars.COVERAGE_REPORT_PATH }}
 
       - name: Upload wheel artifact
         uses: actions/upload-artifact@v4
