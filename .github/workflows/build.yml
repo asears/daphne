@@ -40,12 +40,12 @@ jobs:
 
       - name: Check format
         if: success() || failure()
-        run: black --check
+        run: uv run black --check
         # run: ruff format --check
 
       - name: Run Ruff
         if: success() || failure()
-        run: ruff check --output-format=github .
+        run: uv run ruff check --output-format=github .
 
       - name: Run tests
         if: success() || failure()
