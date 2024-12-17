@@ -1,15 +1,13 @@
 [project]
 name = "daphne"
 dynamic = ["version"]
-requires-python = ">=3.9"
-
-# TODO(AS): upgrade setup.cfg properties
-# url = "https://github.com/django/daphne"
-# author = "Django Software Foundation"
-# author-email = "foundation@djangoproject.com"
 description = "Django ASGI (HTTP/WebSocket) server"
-# long-description = { file = "README.rst" }
-# long-description-content-type = "text/x-rst"
+requires-python = ">=3.9"
+readme = { file = "README.rst" }
+authors = [
+    { name = "Django Software Foundation", email = "foundation@djangoproject.com" },
+]
+
 license = { text = "BSD" }
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -27,11 +25,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
 ]
 
-dependencies = [
-    "asgiref>=3.5.2,<4",
-    "autobahn>=22.4.2",
-    "twisted[tls]>=22.4",
-]
+dependencies = ["asgiref>=3.5.2,<4", "autobahn>=22.4.2", "twisted[tls]>=22.4"]
 
 [project.optional-dependencies]
 tests = [
@@ -49,6 +43,11 @@ tests = [
     "mypy",
 ]
 
+[project.urls]
+homepage = "https://github.com/django/daphne"
+documentation = "https://channels.readthedocs.io"
+repository = "https://github.com/django/daphne.git"
+
 [project.scripts]
 daphne = "daphne.cli:CommandLineInterface.entrypoint"
 
@@ -59,7 +58,14 @@ version = { attr = "daphne.__version__" }
 package = true
 
 [tool.flake8]
-exclude = ["venv/*", "tox/*", "docs/*", "testproject/*", "js_client/*", ".eggs/*"]
+exclude = [
+    "venv/*",
+    "tox/*",
+    "docs/*",
+    "testproject/*",
+    "js_client/*",
+    ".eggs/*",
+]
 extend-ignore = ["E123", "E128", "E266", "E402", "W503", "E731", "W601", "B036"]
 max-line-length = 120
 
@@ -69,13 +75,17 @@ profile = "black"
 [tool.pytest]
 testpaths = ["tests"]
 asyncio_mode = "strict"
-filterwarnings = [
-    "ignore::pytest.PytestDeprecationWarning"
-]
+filterwarnings = ["ignore::pytest.PytestDeprecationWarning"]
 
-# TODO(AS): This conflicts with tests for some reason
+# TODO(AS): This conflicts with tests on local windows for some reason
 # [tool.pytest.ini_options]
 # addopts = "--cov=daphne --cov-report html"
+
+[tool.coverage.run]
+omit = ["tests"]
+
+[tool.coverage.report]
+show_missing = "true"
 
 [tool.ruff]
 exclude = [
@@ -110,8 +120,8 @@ exclude = [
 line-length = 120
 indent-width = 4
 
-# Assume Python 3.10
-target-version = "py310"
+# Assume Python 3.9
+target-version = "py39"
 
 # output format
 output-format = "grouped"

@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: read
+  id-token: write
+  attestations: write
 
 jobs:
   build:
@@ -77,3 +79,22 @@ jobs:
         with:
           name: daphne-wheel
           path: dist/*.whl
+
+      - name: Upload source distribution artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: daphne-sdist
+          path: dist/*.tar.gz
+
+      # TODO(AS): Artifact attestations and SBOM
+      # - name: Generate artifact attestation
+      #   uses: actions/attest-build-provenance@v2
+      #   with:
+      #     subject-path: 'dist/*.whl'
+
+      # - name: Generate SBOM attestation
+      #   uses: actions/attest-sbom@v1
+      #   with:
+      #     subject-path: 'dist/*.whl'
+      #     sbom-path: 'dist/sbom.spdx.json'

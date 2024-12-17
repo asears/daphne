@@ -30,5 +30,6 @@ test_consumer*
 # Vscode
 .vscode
 
-# code coverage
+# pytest-cov code coverage
 .coverage
+.coverage.**
