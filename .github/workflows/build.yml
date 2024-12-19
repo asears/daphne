@@ -51,17 +51,13 @@ jobs:
         if: success() || failure()
         run: uv run black . --check
 
-      - name: Check ruff format
-        if: success() || failure()
-        run: uv run ruff format . --check
-
       - name: Run type checks
         if: success() || failure()
         run: uv run mypy .
 
       - name: Run tests
         if: success() || failure()
-        run: uv run pytest tests --cov=$PROJ_NAME --cov-report=html
+        run: uv run pytest tests . --cov=$PROJ_NAME --cov-report=html
 
       - name: Build wheel
         if: success() || failure()
